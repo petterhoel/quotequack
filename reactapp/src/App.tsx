@@ -1,14 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { clients } from './http/httQuack'
+import { Header } from "./components/Header";
 
 type State = {
     joke: string;
 }
 
 class App extends React.Component<any, any> {
-        //
+        
     state: State = {
         joke: ''
     };
