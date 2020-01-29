@@ -1,28 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import {Header} from "./components/Header";
+import { clients } from './http/httQuack'
+import { Header } from "./components/Header";
 
-const App: React.FC = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Header/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type State = {
+    joke: string;
 }
 
+class App extends React.Component<any, any> {
+        
+    state: State = {
+        joke: ''
+    };
+
+    async getJoke(): Promise<any> {
+        const { jokes } = clients;
+        return await jokes.get('');
+    }
+
+    async componentDidMount(): Promise<any> {
+        const { data } = await this.getJoke();
+        this.setState({
+            joke: data.joke
+        });
+    }
+
+    render() {
+        const { joke  } = this.state;
+        return (
+            <div className="App">
+                <Header/>
+                { joke && <main>{joke}</main>}
+            </div>)
+    };
+}
 export default App;
