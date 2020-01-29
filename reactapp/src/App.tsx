@@ -8,7 +8,7 @@ type State = {
 }
 
 class App extends React.Component<any, any> {
-
+        //
     state: State = {
         joke: ''
     };
