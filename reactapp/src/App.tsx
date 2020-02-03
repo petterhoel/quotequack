@@ -1,28 +1,22 @@
 import React from 'react';
 import './App.css';
-import { clients } from './http/httQuack'
 import { Header } from "./components/Header";
 import Quote from "./components/Quote";
+import { getQuote } from './quote-service';
 
 type State = {
-    joke: string;
+    quote: string;
 }
 
 class App extends React.Component<any, any> {
 
     state: State = {
-        joke: ''
-    };
-
-    getJoke = async () => {
-        const { jokes } = clients;
-        return await jokes.get('');
+        quote: ''
     };
 
     updateQuotes = async () => {
-        const { data } = await this.getJoke();
         this.setState({
-            joke: data.joke
+            quote: await getQuote()
         });
     };
 
@@ -33,12 +27,12 @@ class App extends React.Component<any, any> {
     }
 
     render() {
-        const { joke } = this.state;
+        const { quote } = this.state;
         return (
             <div className="App">
                 <Header/>
                 <main>
-                    <Quote quote={joke}/>
+                    <Quote quote={quote}/>
                 </main>
             </div>)
     };
