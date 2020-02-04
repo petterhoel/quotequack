@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import { Header } from "./components/Header";
 import Quote from "./components/Quote";
 import { getQuote } from './quote-service';
@@ -29,7 +28,7 @@ class App extends React.Component<any, any> {
     render() {
         const { quote } = this.state;
         return (
-            <div className="App">
+            <div>
                 <Header/>
                 <main>
                     <Quote quote={quote}/>

@@ -1,9 +1,10 @@
 import React from 'react';
+import Logo from "./Logo";
 
 export const Header: React.FC = () => (
   <div>
     <h1>
-      <span role="img" aria-label="three duck emojis">🦆🦆🦆</span>
+        <Logo/>
     </h1>
   </div>
 );
