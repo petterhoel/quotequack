@@ -1,14 +1,17 @@
 import axios from 'axios';
+import {api} from "../api";
 
-const dadJokeClient = axios.create({
-    baseURL: 'https://icanhazdadjoke.com',
-    responseType: 'json',
-    headers: {
-        'Accept': 'application/json'
-    }
-});
-
-
-export const clients = {
-    jokes: dadJokeClient
+export const makeClients = (apis: api[]) => {
+    return apis.map(api => {
+        return {
+            ...api,
+            client: axios.create({
+                baseURL: api.url,
+                responseType: 'json',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+        };
+    });
 };
