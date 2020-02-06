@@ -1,21 +1,27 @@
-import { makeClients} from './http/htt-quack';
+import {makeClients} from './http/htt-quack';
 import {Endpoint} from "./api";
 
 interface jokeResponse {
-	id: string;
 	joke: string;
-	status: 200
 }
 
 interface programmerResponse {
 	en: string;
-	_id: string;
 	author: string;
 }
 
+interface dumpResponse {
+	value: string;
+}
+
+interface kanyeRespnse {
+	quote: string;
+}
 
 const mapJokeResponse = (response: jokeResponse): string => response.joke;
 const mapProgrammerResponse = (response: programmerResponse): string =>  response.en;
+const mapTonaldDumpResponse = (response: dumpResponse): string => response.value;
+const mapKanyeResponse = (response: kanyeRespnse): string => response.quote;
 
 /**
  * Asynkron operasjon som returerer et sitat til konsument.
@@ -41,7 +47,11 @@ const mapResponse = (response: any, endpoint: Endpoint): string => {
 		case Endpoint.JOKE:
 			return mapJokeResponse(response);
 		case Endpoint.PROGRAMMING:
-			return mapProgrammerResponse(response)
+			return mapProgrammerResponse(response);
+		case Endpoint.IDIOT:
+			return mapTonaldDumpResponse(response);
+		case Endpoint.YEEZY:
+			return mapKanyeResponse(response)
 	}
 };
 
@@ -57,6 +67,16 @@ const endpoints: { url: string, name: string, type: Endpoint }[] = [
 		name: 'dadjoke',
 		type: Endpoint.PROGRAMMING
 	},
+	{
+		url: 'https://tronalddump.io/random/quote',
+		name: 'tonalddump',
+		type: Endpoint.IDIOT
+	},
+	{
+		url: 'https://api.kanye.rest',
+		name: 'kanye',
+		type: Endpoint.YEEZY
+	}
 ];
 
 const clients = makeClients(endpoints);

@@ -28,12 +28,10 @@ class App extends React.Component<any, any> {
     render() {
         const { quote } = this.state;
         return (
-            <div>
+            <main className={'wrapper'}>
                 <Header/>
-                <main>
-                    <Quote quote={quote}/>
-                </main>
-            </div>)
+                <Quote quote={quote}/>
+            </main>)
     };
 }
 export default App;

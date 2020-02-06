@@ -6,5 +6,7 @@ export interface api {
 
 export enum Endpoint {
     JOKE = 0,
-    PROGRAMMING = 1
+    PROGRAMMING = 1,
+    IDIOT = 2,
+    YEEZY = 3
 }
