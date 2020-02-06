@@ -6,21 +6,30 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Noto Serif', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+main.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 blockquote {
   position: relative;
-  font-size: 60px;
+  font-size: 30px;
+  width: 800px;
+  max-width: 100vw;
   color: aliceblue;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
   border-top: 1px solid;
   border-bottom: 1px solid;
+}
+
+blockquote > div {
+  padding: .6em;
 }
 
 .quote:after {
